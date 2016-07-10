@@ -16,4 +16,4 @@ deployment:
         commands:
             - mkdir -p ~/docker; docker save mazlix/testci > ~/docker/image.tar
             - scp ~/docker/image.tar root@101.201.38.83:~
-            - ssh root@101.201.38.83 "docker load image.tar; docker run mazlix/testci;"
+            - ssh root@101.201.38.83 "docker load image.tar; docker run -d -e ROOT_URL=http://ilovemeteorcamp.co -p 80:80 mazlix/testci"
