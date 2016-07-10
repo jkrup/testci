@@ -17,5 +17,6 @@ deployment:
             - mkdir -p ~/docker; docker save mazlix/testci > ~/docker/image.tar
             - rsync -zP ~/docker/image.tar root@198.199.92.163:~
             - ssh root@198.199.92.163 "docker kill \$(docker ps -q); docker load -i image.tar; docker run -d -e ROOT_URL=http://testci.bokuga.com -p 80:80 mazlix/testci"
-            - rsync -zP ~/docker/image.tar root@101.201.38.83:~
+            - rsync -zP ~/docker/image.tar root@101.201.38.83:~:
+                timeout: 7200
             - ssh root@101.201.38.83 "docker kill \$(docker ps -q); docker load -i image.tar; docker run -d -e ROOT_URL=http://testci.bokuga.com -p 80:80 mazlix/testci"
