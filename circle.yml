@@ -8,5 +8,5 @@ dependencies:
     - docker build -t mazlix/testci .
 test:
   override:
-    - docker run -d -p 80:80 mazlix/testci; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost:80
+    - docker run -d -p 80:8080 mazlix/testci; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8080
